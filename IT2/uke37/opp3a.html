@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>opp3a</title>
+</head>
+<body>
+
+<script>
+    var terningSum = 0;
+    var i = 0;
+    
+    while (terningSum < 50){
+        terningSum = terningSum + Math.floor(Math.random()*6+1);
+        
+        /*if (terningSum === 6){
+            document.write("Du fikk nr 6");
+        }
+        else {
+            document.write("du fikk noe annet");
+        }*/
+        i++;
+        document.write(" Summen er nå: " + terningSum + ". Dette var kast nummer " + i);
+    }
+
+    document.write("Løkken er nå slutt")
+</script>
+
+</body>
+</html>

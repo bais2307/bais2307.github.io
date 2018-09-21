@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oppg1</title>
+</head>
+<body>
+
+
+<script>
+    var vinner;
+
+    while (vinner !== 10){
+        vinner = Math.floor(Math.random()*10+1); // oppdaterer vinner med ett tilfeldig tall mellom 0 og 10
+        if (vinner === 10){
+            document.write("gratulerer du vant");
+
+        }
+        else {
+            document.write("du tapte");
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hendelse</title>
+    <style>
+        body{
+            cursor: none;
+
+        }
+        #firkant{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            margin-left: 40px;
+            margin-top: 40px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+  <img src="rar.jpg" id="firkant"></img>
+
+  <script>
+      var firkant = document.getElementById("firkant");
+
+      document.onmousemove = function () {
+          var x = event.clientX - 100; // oppretter en
+          var y = event.clientY - 100;
+          console.log("x=" + x);
+          console.log("y =" + y);
+
+          firkant.style.marginLeft = x + "px";
+          firkant.style.marginTop = y + "px";
+
+
+      }
+  </script>
+
+</body>
+</html>

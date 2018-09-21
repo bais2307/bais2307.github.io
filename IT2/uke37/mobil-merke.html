@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mobilmerke</title>
+</head>
+<body>
+<p id="tekst"></p>
+
+<img id="bilde1">
+
+   <script>
+       var mobilMerke = prompt("Skriv inn ditt mobilmerke");
+       var bilde1 = document.getElementById("bilde1");
+       var tekst = document.getElementById("tekst");
+       switch (mobilMerke){
+           case "Iphone":
+               document.write("Store nyheter: \n" +
+                   "Vi presenterer nye iPhone XS, iPhone XS Max, iPhone XR og Apple Watch Series 4. Større skjermer er bare begynnelsen.\n" +
+                   "Se presentasjone");
+               break;
+           case "Samsung":
+               tekst.innerHTML = "Samsung Galaxy er best av alle andre mobiltelefoner, anbefaler dette sterk, bare å kjøpe!";
+               bilde1.src = "samsung.jpg";
+               break;
+           case "HTC":
+               document.write("HTC har mye mye bedre kamera enn andre telefoner, tar beste bilder.")
+       }
+   </script>
+
+</body>
+</html>
