@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oppg6</title>
+</head>
+<body>
+
+ <script>
+     var hemmeligTall = Math.floor(Math.random()*100)+1;
+
+     var gjett = Number(prompt("Gjett et tall mellom 1 og 100"));
+
+     while (gjett !== hemmeligTall) {
+
+
+         if (gjett < hemmeligTall) {
+             var gjett = Number(prompt("Gjettet riktig"));
+
+         }
+
+         else {
+             var gjett = Number(prompt("Gjettet for høyt, prøv på nytt"));
+             document.write("Prøv på nytt");
+
+         }
+     }
+
+     alert("Du gjettet riktig!");
+
+
+
+
+ </script>
+
+</body>
+</html>

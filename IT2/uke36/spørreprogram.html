@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>spørre program</title>
+</head>
+<body>
+
+<p>hva heter du?</p>
+
+<input type="text" id="inpSvar">
+
+<button type="text" id="btnTrykk">Trykk her</button>
+<br>
+<span id="spnResultat">du svarte riktig!</span>
+
+<script>
+    var inpSvar = document.getElementById("inpSvar");
+    var spnResultat = document.getElementById("spnResultat");
+    var btnTrykk = document.getElementById("btnTrykk");
+
+    btnTrykk.onclick = function () {
+        spnResultat.innerHTML = inpSvar.value;
+
+
+        if (inpSvar === "Rolf") {
+            document.write("Riktig");
+        }
+        else {
+            document.write("Feil");
+        }
+    }
+
+</script>
+</body>
+</html>

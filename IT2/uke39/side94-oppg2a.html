@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oppg2a</title>
+</head>
+<body>
+
+<canvas id="minCanvas" width="300" height="300"></canvas>
+
+<script>
+    var minCanvas = document.getElementById("minCanvas");
+    var ctx = minCanvas.getContext("2d");
+    var side = 170;
+    var xposisjon = 0;
+    var yposisjon = 0;
+
+    for (var i = 0; i<=10; i++){
+        ctx.lineTo(xposisjon+side,yposisjon);
+        ctx.stroke();
+        yposisjon = yposisjon + 10;
+        ctx.moveTo(xposisjon,yposisjon);
+    }
+</script>
+
+</body>
+</html>

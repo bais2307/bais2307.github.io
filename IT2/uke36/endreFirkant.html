@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>justere boksen</title>
+
+    <style>
+        #minBoks{
+            background-color: aqua;
+            width: 300px;
+            height: 300px;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+
+  <input type="range" id="inpStorrelse" min="10" max="1020">
+  <input type="text" id="inpFarge">
+
+ <div id="minBoks"></div>
+
+<script>
+
+    var inpStorrelse = document.getElementById("inpStorrelse");
+    var inpFarge = document.getElementById("inpFarge");
+    var minBoks = document.getElementById("minBoks");
+
+    inpStorrelse.onmousemove = function () {
+        minBoks.style.width = inpStorrelse.value + "px";
+        minBoks.style.height = inpStorrelse.value + "px";
+    };
+
+        inpFarge.onkeyup = function(){
+        minBoks.style.backgroundColor = inpFarge.value;
+
+    };
+</script>
+
+</body>
+</html>

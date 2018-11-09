@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>en firkant</title>
+
+    <style>
+        #minFirkant{
+            background-color: peachpuff;
+            width: 200px;
+            height: 200px;
+            transition: 1s;
+        }
+    </style>
+
+</head>
+<body>
+
+  <input type="range" id="inpStorrelse" min="0" max="1030">
+
+ <div id="minFirkant"></div>
+
+<script>
+    var inpStorrelse = document.getElementById("inpStorrelse");
+    var minFirkant = document.getElementById("minFirkant");
+
+    inpStorrelse.onmousemove = function () {
+        minFirkant.style.width = inpStorrelse.value + "px";
+
+    };
+</script>
+
+</body>
+</html>

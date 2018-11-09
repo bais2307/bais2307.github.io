@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kalkulator</title>
+</head>
+<body>
+
+  <input type="number" id="inpTall1">
+  <input type="number" id="inpTall2">
+  <input type="text" id="inpTegn">
+  <button id="btnRegnUt">Regnut</button>
+  <span id="spnResultat"></span>
+  
+
+<script>
+
+    var inpTall1 = document.getElementById("inpTall1");
+    var inpTall2 = document.getElementById("inpTall2");
+    var inpTegn = document.getElementById("inpTegn");
+    var btnRegnUt = document.getElementById("btnRegnUt");
+    var spnResultat = document.getElementById("spnResultat");
+
+    btnRegnUt.onclick = function () {
+        if (inpTegn.value === "+"){
+            spnResultat.innerHTML = Number(inpTall1.value) + Number(inpTall2.value);
+        }
+        else if (inpTegn.value === "-"){
+            spnResultat.innerHTML = Number(inpTall1.value) - Number(inpTall2.value);
+        }
+        else if (inpTegn.value === "*"){
+            spnResultat.innerHTML = Number(inpTall1.value) * Number(inpTall2.value);
+        }
+        else if (inpTegn.value === "/"){
+            spnResultat.innerHTML = Number(inpTall1.value) / Number(inpTall2.value);
+        }
+
+    }
+
+
+</script>
+
+</body>
+</html>

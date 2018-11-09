@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>spørre</title>
+</head>
+<body>
+
+<script>
+    var spill = "Ja";
+    var antSpill = 0;
+    var antPar = 0;
+
+    while (spill === "Ja"){
+        tall = prompt("skriv et tall");
+        antSpill ++;
+
+        if (tall % 2 === 0){
+            document.write("du skrev et partall");
+            antPar++;
+
+        }
+        else {
+            document.write("du skrev et oddetall");
+
+        }
+        spill = prompt("vil du spille igjen? Ja eller Nei")
+    }
+
+</script>
+
+</body>
+</html>

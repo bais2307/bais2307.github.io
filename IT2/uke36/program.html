@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>program</title>
+</head>
+<body>
+
+ <p>hvem er kapitein i United?</p>
+ <input type="text" id="inpSvar">
+ <button id="btnSvar">Trykk</button>
+ <img id="imgPokal">
+ <img id="imgFeil">
+ <div id="divSvar"></div>
+
+<script>
+    var inpSvar = document.getElementById("inpSvar");
+    var btnSvar = document.getElementById("btnSvar");
+    var imgPokal = document.getElementById("imgPokal");
+    var imgFeil = document.getElementById("imgFeil");
+    var divSvar = document.getElementById("divSvar");
+
+    btnSvar.onclick = function () {
+        if (inpSvar.value === "Pogba" || inpSvar.value === "Paul Pogba"){
+            divSvar.innerHTML = "Du svarte helt korrekt, veldig bra!";
+            imgPokal.src = "pokal.png";
+            imgFeil.src ="";
+        }
+        else{
+            divSvar.innerHTML = "Du svarte feil, sorry!";
+            imgFeil.src = "feil.png";
+            imgPokal.src ="";
+        }
+
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bytteFargen</title>
+
+</head>
+<body>
+
+<h1>skal bytte bakgrunnsfarge</h1>
+
+<input type="text" id="inpFarge">
+
+<script>
+    var inpFarge = document.getElementById("inpFarge");
+
+    inpFarge.onkeyup = function () {
+
+        document.body.style.backgroundColor = inpFarge.value;
+
+    };
+</script>
+
+</body>
+</html>

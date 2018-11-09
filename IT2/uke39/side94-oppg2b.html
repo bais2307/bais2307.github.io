@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oppg2b</title>
+</head>
+<body>
+
+<canvas id="minCanvas" width="500" height="500"></canvas>
+
+
+<script>
+    var minCanvas = document.getElementById("minCanvas");
+    var ctx = minCanvas.getContext("2d");
+    var side = 20;
+    var xPosisjon = 150;
+    var yPosisjon = 150;
+    
+    for (var i = 1; i<=10; i++){
+        ctx.rect(xPosisjon,yPosisjon,side,side);
+        ctx.stroke();
+        xPosisjon = xPosisjon - 10;
+        yPosisjon = yPosisjon - 10;
+        side = side + 20;
+    }
+    
+</script>
+
+</body>
+</html>

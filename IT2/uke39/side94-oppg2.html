@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oppg2</title>
+</head>
+<body>
+
+<script>
+    var fibmin2 = 0;
+    var fibmin1 = 1;
+    var fib = fibmin2;
+    var txtUt = "";
+    
+    for (var i = 0; i<10; i++){
+        txtUt = +fib+",";
+        fibmin2 = fibmin1;
+        fibmin1 = fib;
+        fib = fibmin2 + fibmin1;
+    }
+    document.write(txtUt);
+</script>
+
+</body>
+</html>
