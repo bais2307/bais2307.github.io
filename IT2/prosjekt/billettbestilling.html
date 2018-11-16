@@ -5,8 +5,8 @@
     <title>billettbestilling</title>
     <style>
         body{
-            background-color: gray;
-            background: url("") no-repeat center center fixed;
+            background-color: lightblue;
+            /*background: url("") no-repeat center center fixed;*/
             background-size: cover;
 
         }
@@ -16,6 +16,9 @@
         }
         .felt{
             margin-bottom: 10px;
+        }
+        #innlandPris{
+            color: brown;
         }
     </style>
 </head>
@@ -28,7 +31,7 @@
     <label id=""> Fly fra </label>
    <select id="velgFlyplassUtreise">
        <option value=""> Velg flyplass</option>
-       <option value="Osl">Oslo</option>
+       <option value="OSL">Oslo</option>
        <option value="TRD">Trondheim</option>
        <option value="BGO">Bergen</option>
        <option value="UTL">Utlandet</option>
@@ -37,7 +40,7 @@
     <label id=""> Fly til </label>
     <select id="velgFlyplassInreise">
         <option value=""> Velg flyplass</option>
-        <option value="Osl">Oslo</option>
+        <option value="OSL">Oslo</option>
         <option value="TRD">Trondheim</option>
         <option value="BGO">Bergen</option>
         <option value="UTL">Utlandet</option>
@@ -105,6 +108,8 @@
     var adresse = document.getElementById("adresse");
     var btn = document.getElementById("btn");
     var innlandPris = document.getElementById("innlandPris");
+    var utlandPris = document.getElementById("utlandPris");
+    var pris = 0;
 
 
     function bestilling() {
@@ -112,15 +117,35 @@
         console.log(velgFlyplassInreise.value);
         console.log(velgFlyplassUtreise.value);
         if (velgFlyplassUtreise.value === "OSL" && velgFlyplassInreise.value === "BGO"){
-            document.write("Prisen fra Oslo til Bergen");
+            pris = pris + "inpAntVoksne";
+            innlandPris.innerHTML = "Takk for at du valgte å reise med oss, ønsker deg en behagelig tur! Prisen fra Oslo til Bergen er i NOK " + 1000;
         }
         else if (velgFlyplassUtreise.value === "BGO" && velgFlyplassInreise.value === "OSL") {
-            innlandPris.innherHTML = 1000;
-            document.write("Prisen fra Bergen til Oslo er i NOK");
+            innlandPris.innerHTML = "Takk for at du valgte å reise med oss, ønsker deg en behagelig tur! Prisen fra Bergen til Oslo er i NOK " + 1000;
+
+
         }
         else if (velgFlyplassUtreise.value === "TRD" && velgFlyplassInreise.value === "OSL"){
-        innlandPris.innherHTML = 1000;
-        document.write("Prisen fra Trondheim til Oslo Er i NOK");
+        innlandPris.innerHTML = "Takk for at du valgte å reise med oss, ønsker deg en behagelig tur! Prisen fra Trondheim til Oslo er i NOK " + 1000;
+
+        }
+        else if (velgFlyplassUtreise.value === "OSL" && velgFlyplassInreise.value === "TRD"){
+            innlandPris.innerHTML = "Takk for at du valgte å reise med oss, ønsker deg en behagelig tur! Prisen fra Oslo til Trondheim er i NOK " + 1000;
+        }
+        else if (velgFlyplassUtreise.value === "BGO" && velgFlyplassInreise.value === "TRD"){
+            innlandPris.innerHTML = "Takk for at du valgte å reise med oss, ønsker deg en behagelig tur! Prisen fra Bergen til Trondheim er i NOK " + 1000;
+        }
+        else if (velgFlyplassUtreise.value === "TRD" && velgFlyplassInreise.value === "BGO"){
+            innlandPris.innerHTML = "Takk for at du valgte å reise med oss, ønsker deg en behagelig tur! Prisen fra Trondhem til Bergen er i NOK " + 1000;
+        }
+        else if (velgFlyplassUtreise.value === "OSL" && velgFlyplassInreise.value === "UTL" ){
+            utlandPris.innerHTML = "Takk for at du valgte å reise med oss, ønsker deg en behagelig tur! Prisen fra Oslo til Utland er i NOK " + 4000;
+        }
+        else if (velgFlyplassUtreise.value === "UTL" && velgFlyplassInreise.value === "OSL"){
+            utlandPris.innerHTML = "Takk for at du valgte å reise med oss, ønsker deg en behagelig tur! Prisen fra Utland til Oslo er i NOK " + 4000;
+        }
+        else {
+            document.write("Du må velge en flyplass og reise FRA også en flyplass å reise TIL");
         }
 
     }
