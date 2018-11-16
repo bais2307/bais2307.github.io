@@ -5,24 +5,28 @@
     <title>billettbestilling</title>
     <style>
         body{
-            background-color: aliceblue;
-            background-image: url("flyplass.jpg");
-            background-repeat: no-repeat;
-            background-image-float: right;
+            background-color: gray;
+            background: url("") no-repeat center center fixed;
+            background-size: cover;
+
         }
         image{
             width: 100%;
             height: auto;
         }
+        .felt{
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
 
-<img src="flyplass.jpg" width="300" height="300">
+<!---<img src="flyplass.jpg" width="300" height="300"> -->
 
-<form id="frmFlyreise">
-    <label id="velgFlyPlassUtreise"> Fly fra </label>
-   <select id="velFlyplassUtreise" required>
+<div id="frmFlyreise">
+    <div id="billettSkjema" class="felt">
+    <label id=""> Fly fra </label>
+   <select id="velgFlyplassUtreise">
        <option value=""> Velg flyplass</option>
        <option value="Osl">Oslo</option>
        <option value="TRD">Trondheim</option>
@@ -30,33 +34,99 @@
        <option value="UTL">Utlandet</option>
    </select>
 
-    <label id="velgFlyplassInreise"> Fly til </label>
-    <select id="velFlyplassinreise" required>
+    <label id=""> Fly til </label>
+    <select id="velgFlyplassInreise">
         <option value=""> Velg flyplass</option>
         <option value="Osl">Oslo</option>
         <option value="TRD">Trondheim</option>
         <option value="BGO">Bergen</option>
         <option value="UTL">Utlandet</option>
     </select>
+    </div>
 
-    <p><label id="inpUTDato">Velg dato for utreise</label> </p>
-    <input type="date" id="inpUtdato" required>
-    <p><label id="inpReturDato">Velg dato for retur</label> </p>
-    <input type="date" id="inpReturDato" required><br>
-
-    <input type="radio" name="rbgType" value="2" id="rbgTR" required data-tekst="Tur/Retur">
+    <div id="dato" class="felt">
+        <label id="inpUTdato">Velg dato for utreise</label>
+    <input type="date" id="inpUtdato">
+    <label id="inpReturdato">Velg dato for retur</label>
+        <input type="date" id="inpReturdato">
+    </div>
+     <div id="Tr" class="felt">
+    <input type="radio" name="rbgType" value="2" id="rbgTR" data-tekst="Tur/Retur">
     <label for="rbgTR">Tur/Retur</label>
-    <input type="radio" name="rbgType" value="1" id="rbgEnvei" required data-tekst="Envei">
-    <label for="rbgEnvei">Envei</label><br>
-    <div><input type="number" id="inpAntVoksne" min="1" value="1" max="10" required>Antall voksne
+    <input type="radio" name="rbgType" value="1" id="rbgEnvei" data-tekst="Envei">
+    <label for="rbgEnvei">Envei</label>
+     </div>
+
+    <div id="VB" class="felt">
+    <input type="number" id="inpAntVoksne" min="1" value="1" max="10">Antall voksne
     <input type="number" id="inpAntBarn" min="0" value="0" max="2">Antall barn</div>
 
+     <div id="Tilbud" class="felt">
     <label for="cbHotell">Tilbud på hotell</label>
     <input type="checkbox" id="cbHotell"></input>
     <label for="cbLeiebil">Tilbud på leiebil</label>
     <input type="checkbox" id="cbLeiebil"></input>
-    <button type="submit">Søk og bestill</button>
-</form>
+     </div>
+    <div id="navn" class="felt">
+        <label for="fornavn">Fornavn:</label>
+        <input type="text" id="fornavn">
+        <label for="etternavn">Etternavn</label>
+        <input type="text" id="etternavn">
+    </div>
+    <div id="info" class="felt">
+        <label for="telefon">Telefonnummer</label>
+        <input type="number" id="telefon">
+        <label for="adresse">Adresse</label>
+        <input type="text" id="adresse">
+    </div>
+    <div id="pris" class="felt">
+    <div id="innlandPris"></div>
+    <div id="utlandPris"></div>
+    </div>
+
+    <button id="btn">Søk og bestill</button>
+
+</div>
+
+<script>
+    var frmFlyreise = document.getElementById("frmFlyreise");
+    var velgFlyplassUtreise = document.getElementById("velgFlyplassUtreise");
+    var velgFlyplassInreise = document.getElementById("velgFlyplassInreise");
+    var inpUtdato = document.getElementById("inpUtdato");
+    var inpReturdato = document.getElementById("inpReturdato");
+    var rbgTR = document.getElementById("rbgTR");
+    var rbgEnvei = document.getElementById("rbgEnvei");
+    var inpAntVoksne = document.getElementById("inpAntVoksne");
+    var inpAntBarn = document.getElementById("inpAntBarn");
+    var cbHotell = document.getElementById("cbHotell");
+    var cbLeiebil = document.getElementById("cbLeiebil");
+    var fornavn = document.getElementById("etternavn");
+    var telefon = document.getElementById("telefon");
+    var adresse = document.getElementById("adresse");
+    var btn = document.getElementById("btn");
+    var innlandPris = document.getElementById("innlandPris");
+
+
+    function bestilling() {
+
+        console.log(velgFlyplassInreise.value);
+        console.log(velgFlyplassUtreise.value);
+        if (velgFlyplassUtreise.value === "OSL" && velgFlyplassInreise.value === "BGO"){
+            document.write("Prisen fra Oslo til Bergen");
+        }
+        else if (velgFlyplassUtreise.value === "BGO" && velgFlyplassInreise.value === "OSL") {
+            innlandPris.innherHTML = 1000;
+            document.write("Prisen fra Bergen til Oslo er i NOK");
+        }
+        else if (velgFlyplassUtreise.value === "TRD" && velgFlyplassInreise.value === "OSL"){
+        innlandPris.innherHTML = 1000;
+        document.write("Prisen fra Trondheim til Oslo Er i NOK");
+        }
+
+    }
+    btn.onclick = bestilling;
+
+</script>
 
 </body>
 </html>
