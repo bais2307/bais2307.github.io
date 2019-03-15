@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flapybird</title>
+
+    <style>
+        #canvas{
+            position: absolute;
+            text-align: center;
+        }
+        body{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas" width="450" height="538"></canvas>
+
+    <script>
+        const cvs = document.querySelector("#canvas"); // referer til html elementet
+        let ctx = cvs.getContext("2d"); // tegner 2d bilde
+
+        let bird = new Image(); //oppretter variabler, bildetag
+        let bg = new Image(); //oppretter variabler, bildetag
+        let fg = new Image(); //oppretter variabler, bildetag
+        let pipeNorth = new Image(); //oppretter variabler, bildetag
+        let pipeSoth = new Image(); //oppretter variabler, bildetag
+
+        bird.src = "bird1.png"; // fuglen
+        bg.src = "bg.png"; //bakgrunnen
+        fg.src = "fg.png"; //nederste bilde som score kommer opp i
+        pipeNorth.src = "Uten1.png"; // pipen oppe
+        pipeSoth.src = "Uten.png"; //pipen nede
+
+        cvs.width = window.innerWidth;
+        cvs.height = window.innerHeight;
+
+        let gap = 115; //avstanden mellom de to pipene
+        let constant = pipeNorth.height + gap; //oppretter constant som er pipen oppe plus avstanden mellom
+
+        let bX = 10;
+        let bY = 150;
+        let gravity = 1.5; // oppretter variabel for gravitasjonen
+
+        let score = 0; // oppretter en variabel for som score og setter verdien til den null
+
+        //document.addEventListener("keyDown", moveUp);
+
+        document.onkeydown = moveUp; //funksjonen som gjør at fuglen flytter seg opp
+
+        function moveUp() {
+            bY -= 25;
+        }
+
+        let pipe = [];
+
+        pipe[0] = {
+            x: cvs.width,
+            y: 0
+        };
+
+        function draw() {
+            ctx.drawImage(bg,0,0,cvs.width,cvs.height);
+
+            for (let i = 0; i<pipe.length; i++) {
+
+                ctx.drawImage(pipeNorth, pipe[i].x, pipe[i].y);
+                ctx.drawImage(pipeSoth, pipe[i].x, pipe[i].y + constant);
+
+                pipe[i].x--;
+
+                if (pipe[i].x == 125) {
+                    pipe.push({
+                        x: cvs.width,
+                        y: Math.floor(Math.random() * pipeNorth.height) - pipeNorth.height
+                    });
+                }
+
+
+                if (bX + bird.width >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width
+                    && (bY <= pipe[i].y + pipeNorth.height || bY + bird.height >=
+                        pipe[i].y + constant) || bY + bird.height >= cvs.height - fg.height) {
+                    location.reload();
+                }
+
+                if (pipe[i].x == 5) {
+                    score++;
+                }
+            }
+
+
+            ctx.drawImage(fg,0,cvs.height - fg.height,cvs.width,fg.height);
+            ctx.drawImage(bird,bX,bY);
+
+            bY += gravity;
+            ctx.fillStyle = "#000";
+            ctx.font = "20px verdana";
+            ctx.fillText("score : " + score,10, cvs.height-20);
+
+            requestAnimationFrame(draw);
+        }
+        draw();
+    </script>
+</body>
+</html>
